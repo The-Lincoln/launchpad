@@ -1,0 +1,22 @@
+{
+    "name": "phpml/php-machine-learning",
+    "description": "PHP Machine Learning Library for Data Analysis",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MD Shoeb Lincoln ",
+            "email": "md.s.lincoln@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPML\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

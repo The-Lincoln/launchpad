@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Machine Learning Library</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .code-block {
+            background: #f1f1f1;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+        .nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: #e2e8f0;
+            color: #4a5568;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PHP Machine Learning Library</h1>
+        <p>A lightweight machine learning library for data analysis in PHP</p>
+        <div class="badge">Version 1.0.0</div>
+    </header>
+
+    <div class="nav">
+        <a href="#installation">Installation</a>
+        <a href="#usage">Usage</a>
+        <a href="#models">Models</a>
+        <a href="#preprocessing">Preprocessing</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#evaluation">Evaluation</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2 id="installation">Installation</h2>
+            <p>Install via Composer:</p>
+            <div class="code-block">
+                composer require phpml/php-machine-learning
+            </div>
+            <p>Or add to your composer.json:</p>
+            <div class="code-block">
+                "phpml/php-machine-learning": "^1.0"
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 id="usage">Basic Usage</h2>
+            <p>Here's a simple example of using the library:</p>
+            <div class="code-block">
+                &lt;?php<br>
+                require 'vendor/autoload.php';<br>
+                <br>
+                use PHPML\Models\LinearRegression;<br>
+                use PHPML\Preprocessing\DataPreprocessor;<br>
+                <br>
+                // Sample data<br>
+                $data = [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]];<br>
+                $labels = [3, 5, 7, 9, 11];<br>
+                <br>
+                // Preprocess data<br>
+                $preprocessor = new DataPreprocessor($data);<br>
+                $normalizedData = $preprocessor->normalize();<br>
+                <br>
+                // Train model<br>
+                $model = new LinearRegression();<br>
+                $model->fit($normalizedData, $labels);<br>
+                <br>
+                // Make predictions<br>
+                $predictions = $model->predict($normalizedData);<br>
+                print_r($predictions);<br>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 id="models">Available Models</h2>
+            <ul>
+                <li><strong>LinearRegression</strong> - Simple linear regression model</li>
+                <li><strong>KMeans</strong> - K-means clustering algorithm</li>
+                <li><strong>LogisticRegression</strong> - Logistic regression for classification</li>
+                <li><strong>DecisionTree</strong> - Decision tree classifier</li>
+                <li><strong>RandomForest</strong> - Random forest ensemble</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 id="preprocessing">Data Preprocessing</h2>
+            <p>The DataPreprocessor class provides various data preprocessing methods:</p>
+            <ul>
+                <li><code>normalize()</code> - Scale data to [0, 1] range</li>
+                <li><code>standardize()</code> - Standardize data (mean=0, std=1)</li>
+                <li><code>handleMissingValues()</code> - Handle missing values</li>
+                <li><code>encodeCategorical()</code> - One-hot encode categorical data</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 id="analysis">Data Analysis</h2>
+            <p>The DataAnalyzer class provides statistical analysis:</p>
+            <ul>
+                <li><code>getSummary()</code> - Get descriptive statistics</li>
+                <li><code>correlationMatrix()</code> - Calculate correlation matrix</li>
+                <li><code>detectOutliers()</code> - Identify outliers in data</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2 id="evaluation">Model Evaluation</h2>
+            <p>The ModelEvaluator class provides evaluation metrics:</p>
+            <ul>
+                <li><code>accuracy()</code> - Calculate classification accuracy</li>
+                <li><code>precision()</code> - Calculate precision score</li>
+                <li><code>recall()</code> - Calculate recall score</li>
+                <li><code>f1Score()</code> - Calculate F1 score</li>
+                <li><code>confusionMatrix()</code> - Generate confusion matrix</li>
+                <li><code>meanSquaredError()</code> - Calculate MSE for regression</li>
+                <li><code>meanAbsoluteError()</code> - Calculate MAE for regression</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 PHP Machine Learning Library. MIT License.</p>
+    </footer>
+</body>
+</html>
